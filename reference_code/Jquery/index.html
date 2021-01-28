@@ -30,6 +30,12 @@ $(document).ready(function(){
    url:"https://raw.githubusercontent.com/dhong639/CarsonsVillage_Website-Upgrade/main/PapaParse_Test/data.csv",
    dataType:"text",
    success:function(data)
+    /*
+    * NOTE: Data is returned in the form of a string. 
+    * Since PapaParse has the option to parse by strings, 
+    * it is feasibly to use JQuery to first retrieve the file stored on Github, 
+    * then use PapaParse to parse the text contents of the CSV. 
+    */
    {
     console.log("This is data:\n" + data);
 
