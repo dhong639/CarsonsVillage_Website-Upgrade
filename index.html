@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="papaparse.min.js"></script>
+</head>
+<body>
+
+<h2>This is a heading</h2>
+
+<hr>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<select>
+
+</select>
+
+<button id='load-data'>Click me</button>
+
+</body>
+</html>
+
+<script>
+var csvFile = "https://raw.githubusercontent.com/dhong639/CarsonsVillage_Website-Upgrade/main/data.csv";
+$(document).ready(function(){ 
+	function doStuff(data) {
+		//console.log(data[0]);
+		/*var rowHeader = [];
+		var row = [];
+		rowHeader = data[0];
+		for(var i = 1; i < data.length; i++) {
+			if(data[i].length == rowHeader.length)
+			{
+				row.push(data[i]);
+			}
+		}*/
+	}
+	function doMoreStuff(data) {
+		//console.log(data[1]);
+	}
+	function parseData(url, callBack) {
+		Papa.parse(url, {
+			download:true, 
+			header: true,
+			dynamicTyping: true, 
+			complete: function(results) {
+				//console.log(results.data);
+				callBack(results.data);
+			}
+		});
+	}
+	parseData(csvFile, doStuff);
+	//parseData(csvFile, doStuff);
+	parseData(csvFile, doMoreStuff);
+});
+
+</script>
