@@ -6,16 +6,17 @@
 </head>
 <body>
 
-<h2>This is a heading</h2>
+<h1>Testing Automated Display of Information from CSV File</h1>
+
+<h2>WARNING: current iteration does not handle newline characters in CSV file</h2>
 
 <hr>
 
-<p>This is a paragraph.</p>
-<p>This is another paragraph.</p>
+<p id="display_name"></p>
+<p id="display_address"></p>
+<p id="display_description"></p>
 
-<select>
-
-</select>
+<select id="option_name"></select>
 
 <button id='load-data'>Click me</button>
 
@@ -25,20 +26,33 @@
 <script>
 var csvFile = "https://raw.githubusercontent.com/dhong639/CarsonsVillage_Website-Upgrade/main/data.csv";
 $(document).ready(function(){ 
-	function doStuff(data) {
-		//console.log(data[0]);
-		/*var rowHeader = [];
-		var row = [];
-		rowHeader = data[0];
-		for(var i = 1; i < data.length; i++) {
-			if(data[i].length == rowHeader.length)
-			{
-				row.push(data[i]);
-			}
-		}*/
+	var isHidden = false;
+
+	function main(data) {
+		var id = Math.floor(Math.random()*data.length);
+		$("#display_name").html("Name: <strong>" + data[id].Name + "</strong");
+		$("#display_address").html("Address<emphasis>: " + data[id].Address + "</emphasis>");
+		$("#display_description").html("<emphasis>" + data[id].Description + "</emphasis>");
+		loadOptions(data);
+		buttonOption(data);
 	}
-	function doMoreStuff(data) {
-		//console.log(data[1]);
+	function buttonOption(data) {
+		$("#load-data").click(function(){
+			var input = document.getElementById('option_name').value;
+			var row = data[input];
+			$("#display_name").html("<strong>Name: " + row.Name + "</strong");
+			$("#display_address").html("<emphasis>Address: " + row.Address + "</emphasis>");
+			$("#display_description").html("<emphasis>" + row.Description + "</emphasis>");
+		});
+	}
+	function loadOptions(data) {
+		var names = $("#option_name");
+		$(data).each(function(){
+			var option = $("<option />");
+			option.html(this.Name);
+			option.val(this.ID);
+			names.append(option);
+		});
 	}
 	function parseData(url, callBack) {
 		Papa.parse(url, {
@@ -46,14 +60,11 @@ $(document).ready(function(){
 			header: true,
 			dynamicTyping: true, 
 			complete: function(results) {
-				//console.log(results.data);
-				callBack(results.data);
+				callBack(results.data.slice(0, results.data.length-1));
 			}
 		});
 	}
-	parseData(csvFile, doStuff);
-	//parseData(csvFile, doStuff);
-	parseData(csvFile, doMoreStuff);
+	parseData(csvFile, main);
 });
 
 </script>
