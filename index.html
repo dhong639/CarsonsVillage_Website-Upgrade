@@ -12,13 +12,23 @@
 
 <hr>
 
-<p id="display_name"></p>
-<p id="display_address"></p>
-<p id="display_description"></p>
+<p>Will currently handle the following:</p>
+<ul>
+	<li>commas</li>
+	<li>quotation marks</li>
+	<li>non-English characters</li>
+	<li>long text statements</li>
+</ul>
+
+<hr>
 
 <select id="option_name"></select>
 
 <button id='load-data'>Click me</button>
+
+<p id="display_name"></p>
+<p id="display_address"></p>
+<p id="display_description"></p>
 
 </body>
 </html>
@@ -26,7 +36,6 @@
 <script>
 var csvFile = "https://raw.githubusercontent.com/dhong639/CarsonsVillage_Website-Upgrade/main/data.csv";
 $(document).ready(function(){ 
-	var isHidden = false;
 
 	function main(data) {
 		var id = Math.floor(Math.random()*data.length);
