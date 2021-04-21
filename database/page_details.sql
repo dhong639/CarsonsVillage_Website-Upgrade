@@ -3,11 +3,13 @@ CREATE TABLE Page_Details(
 	page_name				TEXT		NOT NULL, 
 	status					INT			NOT NULL	CHECK(status >= 1 AND status <= 4), 
 
-	visitation_date			TIMESTAMP, 
+	visitation_date			DATE, 
+	visitation_time			TIME, 
 	visitation_location		TEXT, 
 	visitation_description	TEXT, 
 
-	funeral_date			TIMESTAMP, 
+	funeral_date			DATE, 
+	funeral_time			TIME, 
 	funeral_location		TEXT, 
 	funeral_description		TEXT, 
 
