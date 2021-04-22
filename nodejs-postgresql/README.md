@@ -2,12 +2,9 @@ These are test scripts of the PostgreSQL database server using NodeJS with a sim
 
 **To set this up on your PC:**
 1. Add these files to your PC
-2. Run the commands:
-
-  a. npm install
-  
-  b. SET DEBUG=nodejs-posgresql:* & npm start
- 3. Use URL: http://localhost:3000/, http://localhost:3000/quotes(http://localhost:3000/quotes?page=1), http://localhost:3000/quotes?page=2
+2. Run the command: npm install
+3. Run the command: SET DEBUG=nodejs-posgresql:* & npm start
+4. Use URL: http://localhost:3000/, http://localhost:3000/quotes(http://localhost:3000/quotes?page=1), http://localhost:3000/quotes?page=2
 
 Note 1: If you want to view the datbase entries in a readable way when you GET, a simple way is to install the Chrome Extension JSON Viewer.
 Note 2: If you do POST operation, a simple way to verify that it has been successfully added to the database is by doing the GET operation(just run the server and view the URL).
