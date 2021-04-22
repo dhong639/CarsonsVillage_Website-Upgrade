@@ -1,5 +1,7 @@
 These are test scripts of the PostgreSQL database server using NodeJS and Express with a simple REST API.
 
+The tutorial used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
+
 **To set this up on your PC:**
 1. Add these files to your PC
 2. Run the command: npm install
@@ -9,8 +11,6 @@ These are test scripts of the PostgreSQL database server using NodeJS and Expres
 Note 1: If you want to view the datbase entries in a readable way when you GET, a simple way is to install the Chrome Extension JSON Viewer.
 
 Note 2: If you do POST operation, a simple way to verify that it has been successfully added to the database is by doing the GET operation(just run the server and view the URL).
-
-The tutorial used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
 
 **If you wish to implement this on your own with the tutorial:**
 
