@@ -1,7 +1,9 @@
 These are test scripts of the PostgreSQL database server using NodeJS with a simple REST API.
+
 The tutioral used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
 
 **If you wish to implement this on your own with the tutorial:**
+
 Note 1: When you are setting up Express, if doing the command: cd nodejs-posgresql && npm install && DEBUG=nodejs-posgresql:* npm start doesn't work for you, then do:
 1. cd nodejs-posgresql
 2. npm install
