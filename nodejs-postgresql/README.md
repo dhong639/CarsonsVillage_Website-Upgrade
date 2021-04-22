@@ -7,6 +7,7 @@ These are test scripts of the PostgreSQL database server using NodeJS and Expres
 4. Use URL: http://localhost:3000/, http://localhost:3000/quotes (http://localhost:3000/quotes?page=1), http://localhost:3000/quotes?page=2
 
 Note 1: If you want to view the datbase entries in a readable way when you GET, a simple way is to install the Chrome Extension JSON Viewer.
+
 Note 2: If you do POST operation, a simple way to verify that it has been successfully added to the database is by doing the GET operation(just run the server and view the URL).
 
 The tutorial used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
