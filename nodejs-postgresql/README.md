@@ -1,6 +1,6 @@
 These are test scripts of the PostgreSQL database server using NodeJS with a simple REST API.
 
-**To set up this on your PC:**
+**To set this up on your PC:**
 1. Add these files to your PC
 2. Run the commands:
   a. npm install
