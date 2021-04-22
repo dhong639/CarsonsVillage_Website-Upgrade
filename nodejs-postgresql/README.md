@@ -1,6 +1,6 @@
 These are test scripts of the PostgreSQL database server using NodeJS with a simple REST API.
 
-The tutioral used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
+The tutorial used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
 
 **If you wish to implement this on your own with the tutorial:**
 
