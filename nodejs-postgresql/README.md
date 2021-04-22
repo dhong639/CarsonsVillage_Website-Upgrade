@@ -1,4 +1,4 @@
-These are test scripts of the PostgreSQL database server using NodeJS with a simple REST API.
+These are test scripts of the PostgreSQL database server using NodeJS and Express with a simple REST API.
 
 **To set this up on your PC:**
 1. Add these files to your PC
