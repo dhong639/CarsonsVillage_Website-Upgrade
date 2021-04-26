@@ -4,9 +4,10 @@ The tutorial used to implement this was: https://medium.com/dailyjs/node-js-post
 
 **To set this up on your PC:**
 1. Add these files to your PC
-2. Run the command: npm install
-3. Run the command: SET DEBUG=nodejs-posgresql:* & npm start
-4. Use URL: http://localhost:3000/, http://localhost:3000/quotes (http://localhost:3000/quotes?page=1), http://localhost:3000/quotes?page=2
+2. In the config.js file, replace DB_USER, DB_PASSWORD, and DB_NAME with your own values
+3. Run the command: npm install
+4. Run the command: SET DEBUG=nodejs-posgresql:* & npm start
+5. Use URL: http://localhost:3000/, http://localhost:3000/quotes (http://localhost:3000/quotes?page=1), http://localhost:3000/quotes?page=2
 
 Note 1: If you want to view the datbase entries in a readable way when you GET, a simple way is to install the Chrome Extension JSON Viewer.
 
