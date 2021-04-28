@@ -14,6 +14,10 @@ Installation:
   npm install pg
   npm install body-parser
   npm install pug
+
+Run Command: 
+ node server.js
+ (perform from directory containing server.js)
   
 Other Notes: 
 * Ensure that PostgreSQL server is running
