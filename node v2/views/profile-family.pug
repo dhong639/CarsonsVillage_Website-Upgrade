@@ -1,0 +1,35 @@
+doctype html 
+head 
+	title=title
+	link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+.container
+	.row
+	.col-md-12
+		h1.text-center=header
+	.row
+		.col-md-4
+			h3 Email:
+		.col-md-8
+			h3=email
+	.row
+		.col-md-4
+			h3 Phone:
+		.col-md-8
+			h3=phone
+	br
+	.well 
+		b List of Client Pages 
+	//table.table.table-striped
+		thead
+			tr
+				th page_name
+				th page_status 
+				th page_link 
+			each item in items 
+				tr
+					td=item.page_name 
+					td=item.page_status 
+					td=page_link
+	.row 
+		.col-md-12 
+			a.btn.btn-info(href=insert_link role='button') Link to insert new page
