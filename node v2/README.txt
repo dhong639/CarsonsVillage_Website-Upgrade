@@ -21,7 +21,7 @@ Run Command:
   
 Other Notes: 
 * Ensure that PostgreSQL server is running
-* Ensure that all files are placed in same directory
+* Ensure that all files are organized in given directory format
 
 Bugs: 
 * Any error in submission, regardless of relation to the database, will trigger the error page
