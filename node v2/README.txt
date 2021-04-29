@@ -81,3 +81,4 @@ Current and Planned Prototype Functions:
 	- Extract donations
 	- Display comments
 	- Logging
+	- Security for GET requests, limit functions based on user role
