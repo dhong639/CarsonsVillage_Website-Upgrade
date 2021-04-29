@@ -64,6 +64,7 @@ Current and Planned Prototype Functions:
 		- insert all page_details information for current user id
 	- Planned functions
 		- Edit page details
+		- Upload/store pictures
 - Admin
 	- '/advocate-admin/:user_id([0-9]+)'
 		- loads advocate name, email, and phone based on provided user id
