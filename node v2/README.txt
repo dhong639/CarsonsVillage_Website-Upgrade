@@ -27,3 +27,56 @@ Bugs:
 * Any error in submission, regardless of relation to the database, will trigger the error page
 * All database insert errors only report the first noted error
 * Links on confirmation do not work
+
+Current and Planned Prototype Functions: 
+- Index
+	- '/' 
+		- redirects to login page
+	- Login
+- General
+	- '/general/user-search'
+		- search users based on name and role
+		- return user id and name
+	- Planned functions
+		- Display client pages
+			- Display image carousel
+			- Format page CSS
+		- Search client pages based on page name
+- Login
+	- '/login/' 
+		- checks user email and role
+		- loads relevant profile page
+	- '/login/error'
+		- user credentials invalid
+		- reloads login page and displays error
+	- Planned functions
+		- Password check/verification
+		- Sending tokens for verification
+		- Okta login service? 
+- Family
+	- '/family/:userid([0-9]+)'
+		- loads family name, email, and phone based on provided user id
+		- link to page creation
+		- link to list of existing family pages
+	- '/family/:userid([0-9]+)/page-list'
+		- loads page name, donation goal, and deadline based on provided user id
+	- '/family/:userid([0-9]+)/page-insert'
+		- insert all page_details information for current user id
+	- Planned functions
+		- Edit page details
+- Admin
+	- '/advocate-admin/:user_id([0-9]+)'
+		- loads advocate name, email, and phone based on provided user id
+		- links for user account creation and list of all pages
+	- '/advocate-admin/:user_id([0-9]+)/user-insert'-
+		- insert all user_account information for new user 
+	- '/advocate-admin/:user_id([0-9]+)/page-list'-
+		- list all existing client pages
+	- Planned functions
+		- ability to edit/enable/disable pages
+		- ability to terminate users
+- Other planned functions
+	- View donations
+	- Extract donations
+	- Display comments
+	- Logging
