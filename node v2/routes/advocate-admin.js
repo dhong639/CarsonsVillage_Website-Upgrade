@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const client = require('./../database.js'); 
+const buildInsert = require('./../query-builder.js');
 
 router.get('/:user_id([0-9]+)', function(req, res) {
 	var text = 'SELECT * FROM User_Account WHERE user_id = $1'; 
@@ -26,26 +27,12 @@ router.get('/:user_id([0-9]+)', function(req, res) {
 });
 
 router.post('/user-insert', function(req, res) {
-	var fields = ['user_id', 'email', 'user_role', 'password_hash', 'password_salt', 'first_name'];
-	var position = ['$1', '$2', '$3', '$4', '$5', '$6']; 
-	var values = [req.body.user_id, req.body.email, req.body.user_role, req.body.password_hash, req.body.password_salt, req.body.first_name];
-	if(req.body.middle_name != '')
-	{
-		fields.push('middle_name');
-		position.push('$' + (position.length+1));
-		values.push(req.body.middle_name);
-	}
-	fields.push('last_name');
-	values.push(req.body.last_name);
-	position.push('$' + (position.length+1));
-	if(req.body.phone != '')
-	{
-		fields.push('phone');
-		position.push('$' + (position.length+1));
-		values.push(req.body.phone);
-	}
-	var text = 'INSERT INTO User_Account (' + fields.join(', ') + ') VALUES (' + position.join(', ') + ')';
-	client.query(text, values)
+	var reqFields = Object.keys(req.body);
+	reqFields.pop();
+	var reqValues = Object.values(req.body);
+	reqValues.pop();
+	var query = buildInsert(reqFields, reqValues, 'User_Account');
+	client.query(query)
 		.then(queryRes => {
 			res.render('confirm', {
 				message: 'Data submitted successfully', 
@@ -63,5 +50,18 @@ router.post('/user-insert', function(req, res) {
 router.get('/user-insert', function(req,  res) {
 	res.sendFile('user-insert.html', {root: 'pages'});
 });
+
+router.get('/page-list', function(req, res) {
+	client.query('SELECT page_name, family_id, donation_goal, deadline, status FROM Page_Details')
+	.then(queryRes => {
+		res.render('client-pages', {
+			headers: ['page_name', 'family_id', 'donation_goal', 'deadline', 'status'], 
+			body: queryRes.rows
+		});
+	})
+	.catch(queryErr => {
+		res.send(queryErr);
+	})
+})
 
 module.exports = router;
