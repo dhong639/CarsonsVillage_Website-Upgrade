@@ -1,6 +1,6 @@
 //Import for stripe payment processing
 //Replace "public key" with public key found in Stripe profile under development tools
-const stripe = Stripe('pk_test_51In73QKcRvbUJ7X9Sf2L1DrxmIX34dWOH5VMAVb2i9tDG6MoI9TOgdqFivEaZFUWXvvM5ZXNxPOaRDOpE2MIbwOl00v5HQa0w5'); // Your Publishable Key
+const stripe = Stripe('insert public key here'); // Your Publishable Key
 //Import for stripe payment processing
 const elements = stripe.elements();
 
