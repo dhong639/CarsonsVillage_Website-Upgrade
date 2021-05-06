@@ -4,6 +4,8 @@ The tutorial used to implement this was: https://medium.com/dailyjs/node-js-post
 
 The following were used as a reference for the image storage: https://medium.com/swlh/uploading-images-to-your-node-js-backend-978261eb0724, https://stackoverflow.com/questions/31592726/how-to-store-a-file-with-file-extension-with-multer
 
+Some Mutler security concerns along with any mentions in above two: https://github.com/expressjs/multer/issues/59, https://www.npmjs.com/package/multer. See any() vs array(fieldname[, maxCount]) security for further detail. single(fieldname) would not keep filename and extension with existing code.
+
 **To set this up on your PC:**
 1. Add these files to your PC
 2. In the config.js file, replace DB_USER, DB_PASSWORD, and DB_NAME with your own values
