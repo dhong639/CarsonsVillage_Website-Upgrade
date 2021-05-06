@@ -35,9 +35,8 @@ router.get('/:user_id([0-9]+)/page-list', function(req, res) {
 	client.query(text, values)
 		.then(queryRes => {
 			//res.send(queryRes);
-			res.render('client-pages.pug', {
-				headers: ['page_name', 'donation_goal', 'deadline', 'status'], 
-				body: queryRes.rows
+			res.render('client-pages', {
+				items: queryRes.rows
 			});
 		}) 
 		.catch(queryErr => {

@@ -52,10 +52,10 @@ router.get('/user-insert', function(req,  res) {
 });
 
 router.get('/page-list', function(req, res) {
-	client.query('SELECT page_name, family_id, donation_goal, deadline, status FROM Page_Details')
+	client.query('SELECT family_id, page_name, donation_goal, deadline, status FROM Page_Details')
 	.then(queryRes => {
-		res.render('client-pages', {
-			headers: ['page_name', 'family_id', 'donation_goal', 'deadline', 'status'], 
+		res.render('advocate-pages', {
+			headers: ['family_id', 'page_name', 'donation_goal', 'deadline', 'status'], 
 			body: queryRes.rows
 		});
 	})
@@ -63,5 +63,29 @@ router.get('/page-list', function(req, res) {
 		res.send(queryErr);
 	})
 })
+
+router.get('/review/:user_id([0-9]+)/:page_name', function(req, res) {
+	var text = 'SELECT * FROM page_details WHERE family_id = $1 AND page_name = $2';
+	var values = [req.params.user_id, req.params.page_name];
+	client.query(text, values)
+		.then(queryRes => {
+			res.render('page-review', {
+				title: req.params.page_name, 
+				page_name: req.params.page_name,
+				visitation_date: queryRes.rows[0].visitation_date, 
+				visitation_location: queryRes.rows[0].visitation_location, 
+				vistitation_description: queryRes.rows[0].visitation_description, 
+				funeral_date: queryRes.rows[0].funeral_date, 
+				funeral_location: queryRes.rows[0].funeral_location, 
+				funeral_description: queryRes.rows[0].funeral_description, 
+				donation_goal: queryRes.rows[0].donation_goal, 
+				deadline: queryRes.rows[0].deadline, 
+				obituary: queryRes.rows[0].obituary
+			})
+		})
+		.catch(queryErr => {
+			res.send(queryErr);
+		});
+});
 
 module.exports = router;
