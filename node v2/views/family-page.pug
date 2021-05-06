@@ -1,0 +1,62 @@
+doctype html 
+head 
+	title=title
+	link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+.container
+	.well.well-sm 
+		h1.text-center=page_name
+	.row 
+		.col-md-12 
+			h2 This section denotes a header
+	.row
+		.col-sm-8
+			h3 Visitation Date:
+		.col-sm-4
+			h3=visitation_date
+	.row
+		.col-sm-8
+			h3 Visitation Location:
+		.col-sm-4
+			h3=visitation_location
+	.row 
+		.col-sm-12 
+			h4.text-center=vistitation_description
+	.row 
+		.col-md-12 
+			h2 This section denotes a header
+	.row
+		.col-sm-8
+			h3 Funeral Date:
+		.col-sm-4
+			h3=funeral_date
+	.row
+		.col-sm-8
+			h3 Funeral Location:
+		.col-sm-4
+			h3=funeral_location
+	.row 
+		.col-sm-12 
+			h4.text-center=funeral_description
+	br
+	.row 
+		.col-md-12 
+			h2 This section denotes payment information 
+	.row 
+		.col-sm-8 
+			h3 Donation goal 
+		.col-sm-4 
+			h3=donation_goal 
+	.row 
+		.col-sm-8 
+			h3 Deadline 
+		.col-sm-4 
+			h3=deadline
+	.row 
+		.col-lg-12 
+			h2 This section denotes an obituary
+	.row 
+		.col-lg-12 
+			p=obituary
+	.row 
+		.col-md-12
+			a.btn.btn-info(href='/general/pages/page-search' insert_link role='button') Return to page search
