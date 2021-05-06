@@ -1,13 +1,15 @@
 These are test scripts of the PostgreSQL database server using NodeJS and Express with a simple REST API.
 
 The tutorial used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
+THe following were used as a reference for the image storage: https://medium.com/swlh/uploading-images-to-your-node-js-backend-978261eb0724, https://stackoverflow.com/questions/31592726/how-to-store-a-file-with-file-extension-with-multer
 
 **To set this up on your PC:**
 1. Add these files to your PC
 2. In the config.js file, replace DB_USER, DB_PASSWORD, and DB_NAME with your own values
 3. Run the command: npm install
-4. Run the command: SET DEBUG=nodejs-posgresql:* & npm start
-5. Use URL: http://localhost:3000/, http://localhost:3000/quotes (http://localhost:3000/quotes?page=1), http://localhost:3000/quotes?page=2
+4. Run the command: npm i multer
+5. Run the command: SET DEBUG=nodejs-posgresql:* & npm start
+6. Use URL: http://localhost:3000/, http://localhost:3000/quotes (http://localhost:3000/quotes?page=1), http://localhost:3000/quotes?page=2
 
 Note 1: If you want to view the datbase entries in a readable way when you GET, a simple way is to install the Chrome Extension JSON Viewer.
 
