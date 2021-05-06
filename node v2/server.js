@@ -33,23 +33,3 @@ app.use('/family', routeFamily);
 app.listen(port, function() {
 	console.log('Listening on port ' + port + '...');
 });
-//app.use(express.static(__dirname));
-
-/*app.get('/', function(req, res) {
-	res.sendFile('index.html', {root: 'pages'});
-});
-
-app.use('/user', routes);
-
-app.get('/data', function(req, res){
-	client.query('SELECT NOW()')
-		.then(queryRes => {
-			console.log(queryRes.rows[0]);
-			res.send(queryRes.rows[0]);
-		})
-		.catch(queryErr => console.error(queryErr.stack));
-})
-
-app.listen(port, function() {
-	console.log('Listening on port 3000');
-});*/
