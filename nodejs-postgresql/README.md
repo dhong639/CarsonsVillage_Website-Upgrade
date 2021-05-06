@@ -1,7 +1,8 @@
 These are test scripts of the PostgreSQL database server using NodeJS and Express with a simple REST API.
 
 The tutorial used to implement this was: https://medium.com/dailyjs/node-js-postgresql-tutorial-7a19d945767f
-THe following were used as a reference for the image storage: https://medium.com/swlh/uploading-images-to-your-node-js-backend-978261eb0724, https://stackoverflow.com/questions/31592726/how-to-store-a-file-with-file-extension-with-multer
+
+The following were used as a reference for the image storage: https://medium.com/swlh/uploading-images-to-your-node-js-backend-978261eb0724, https://stackoverflow.com/questions/31592726/how-to-store-a-file-with-file-extension-with-multer
 
 **To set this up on your PC:**
 1. Add these files to your PC
