@@ -1,70 +1,111 @@
-const express = require('express');
-const { query } = require('./../database.js');
-const router = express.Router();
-const client = require('./../database.js');
-
+/*
+*	David Hong
+*	ECS 3200
+*	Carson's Village: Automated Family Page
+*	general.js
+*		Denotes functions that do not require family or advocate credentials
+*		Located under "/general/"
+*/
+//Declare required dependencies
+const express = require('express');				//load express for front-end and routes
+const router = express.Router();				//load express router
+const client = require('./../database.js');		//load database connection
+/*
+*	/general/user-search
+*	file:		/pages/user-search.html
+*	function:	GET
+*	user interface for account search function
+*/
 router.get('/user-search', function(req, res) {
 	res.sendFile('user-search.html', {root: 'pages'});
 });
-
+/*
+*	/general/user-search
+*	file:		/views/user-results.pug
+*	function:	POST
+*	return list of applicable accounts based on entered credentials
+*/
 router.post('/user-search', function(req, res) {
-	var query = 'SELECT user_id, first_name, middle_name, last_name FROM User_Account WHERE user_role = $1';
-	var values = [req.body.user_role];
-	var position = 1;
-	if(req.body.first_name != '')
-	{
-		position += 1;
-		query = query + ' AND first_name = $' + position;
-		values.push(req.body.first_name);
+	//declare SELECT query
+	var text = 'SELECT user_id, first_name, middle_name, last_name FROM User_Account WHERE';
+	var values = [];							//declare conditional values
+	var reqKeys = Object.keys(req.body);		//get parameter names from precious GET
+	var reqValues = Object.values(req.body);	//get parameter values from pervious GET
+	var count = 1;								//current condition index
+	/*
+	*	build condition of SELECT query
+	*	iterate through each array element of the user-search GET response
+	*	if an item is returned as "" (empty string), do not add
+	*	otherwise, add that element to values and add the relevant condition to the query text
+	*/
+	for(var i = 0; i<reqKeys.length; i++) {
+		if(reqValues[i] != '') {
+			text = ' ' + text + ' ' + reqKeys[i] + ' = $' + count;
+			if(i != reqKeys.length - 1) {
+				text = text + ' AND';
+			}
+			count++;
+			values.push(reqValues[i]); 
+		}
 	}
-	if(req.body.middle_name != '')
-	{
-		position += 1;
-		query = query + ' AND middle_name = $' + position;
-		values.push(req.body.middle_name);
-	}
-	if(req.body.last_name != '')
-	{
-		position += 1;
-		query = query + ' AND last_name = $' + position;
-		values.push(req.body.last_name);
-	}
-	console.log(query);
-	console.log(values);
-	client.query(query, values)
+	/*
+	*	query database
+	*		if successful, use query result to generate user-results.pug template
+	*		if failed, print error to console
+	*/
+	client.query(text, values)
 		.then(queryRes => {
-			console.log(queryRes.rows[0]);
 			res.render('user-results', {
-				//title: 'User Results', 
 				items: queryRes.rows
 			});
-			//res.send(queryRes.rows[0]);
 		})
 		.catch(queryErr => {
 			console.error(queryErr.stack);
 		});
 });
-
+/*
+*	/general/page-search
+*	file:		/pages/page-search.html
+*	function:	GET
+*	user interface for family page search function
+*/
 router.get('/pages/page-search', function(req, res) {
 	res.sendFile('page-search.html', {root: 'pages'});
 });
-
+/*
+*	/general/user-search
+*	file:		/views/user-results.pug
+*	function:	POST
+*	return list of applicable pages based on entered fields
+*/
 router.post('/pages/page-search', function(req, res) {
-	var text = 'SELECT * FROM Page_Details WHERE status = $1';
-	var values = [req.body.status];
-	if(req.body.page_name != '' && req.body.deadline != '') {
-		text = text + ' AND page_name LIKE $2 AND deadline = $3';
-		values.push('%' + req.body.page_name + '%');
-		values.push(req.body.deadline);
+	//declare SELECT query
+	var text = 'SELECT family_id, page_name, donation_goal, deadline FROM Page_Details WHERE';
+	var values = [];							//declare conditional values
+	var reqKeys = Object.keys(req.body);		//get parameter names from previous GET
+	var reqValues = Object.values(req.body);	//get parameter values from pervious GET
+	var count = 1;								//current condition index
+/*
+	*	build condition of SELECT query
+	*	iterate through each array element of the user-search GET response
+	*	if an item is returned as "" (empty string), do not add
+	*	otherwise, add that element to values and add the relevant condition to the query text
+	*/
+	for(var i = 0; i<reqKeys.length; i++) {
+		if(reqValues[i] != '') {
+			text = ' ' + text + ' ' + reqKeys[i] + ' = $' + count;
+			if(i != reqKeys.length - 1) {
+				text = text + ' AND';
+			}
+			count++;
+			values.push(reqValues[i]); 
+		}
 	}
-	else if(req.body.page_name != '') {
-		text = text + ' AND page_name LIKE $2';
-		values.push('%' + req.body.page_name + '%');
-	}
-	else if(req.body.deadline != '') {
-		text = text + ' AND deadline = $2';
-		values.push(req.body.deadline);
-	}
+	/*
+	*	query database
+	*		if successful, use query result to generate page-search.pug template
+	*		if failed, print error to console
+	*/
 	client.query(text, values)
 			.then(queryRes => {
 				res.render('page-search', {
@@ -75,10 +116,22 @@ router.post('/pages/page-search', function(req, res) {
 				res.send(queryErr);
 			});
 });
-
+/*
+*	/general/pages/user_id/page_name
+*	file:		/views/family-page.pug
+*	function:	GET
+*	return specific family page based on family ID and page name
+*/
 router.get('/pages/:user_id([0-9]+)/:page_name', function(req, res) {
+	//build select query
 	var text = 'SELECT * FROM Page_Details WHERE family_id = $1 AND page_name = $2';
+	//set condition values
 	var values = [req.params.user_id, req.params.page_name];
+	/*
+	*	query database
+	*		if successful, use query result to generate family-page.pug template
+	*		if failed, print error to console
+	*/
 	client.query(text, values)
 		.then(queryRes => {
 			res.render('family-page', {
@@ -99,5 +152,5 @@ router.get('/pages/:user_id([0-9]+)/:page_name', function(req, res) {
 			res.send(queryErr);
 		});
 })
-
+//export modules for user in server.js
 module.exports = router;
