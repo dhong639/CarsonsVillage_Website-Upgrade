@@ -12,18 +12,18 @@ head
 				.col-md-12 
 					h2 This section denotes a header
 			.row
-				.col-sm-8
-					h3 Visitation Date:
 				.col-sm-4
-					h3=visitation_date
+					h4 Visitation Date:
+				.col-sm-8
+					h4=visitation_date
 			.row
-				.col-sm-8
-					h3 Visitation Location:
 				.col-sm-4
-					h3=visitation_location
+					h4 Visitation Location:
+				.col-sm-6
+					h4=visitation_location
 			.row 
 				.col-sm-12 
-					h4.text-center=vistitation_description
+					p.text-center=vistitation_description
 			.row(style="background-color:lightgrey;")
 				legend.text-center Insert review regarding visitation
 				.form-group
@@ -34,18 +34,18 @@ head
 				.col-md-12 
 					h2 This section denotes a header
 			.row
-				.col-sm-8
-					h3 Funeral Date:
 				.col-sm-4
-					h3=funeral_date
+					h4 Funeral Date:
+				.col-sm-8
+					h4=funeral_date
 			.row
-				.col-sm-8
-					h3 Funeral Location:
 				.col-sm-4
+					h3 Funeral Location:
+				.col-sm-8
 					h3=funeral_location
 			.row 
 				.col-sm-12 
-					h4.text-center=funeral_description
+					p.text-center=funeral_description
 			.row(style="background-color:lightgrey;")
 				legend.text-center Insert review regarding funeral
 				.form-group
@@ -57,15 +57,15 @@ head
 				.col-md-12 
 					h2 This section denotes payment information 
 			.row 
-				.col-sm-8 
-					h3 Donation goal 
 				.col-sm-4 
-					h3=donation_goal 
+					h4 Donation goal 
+				.col-sm-8 
+					h4=donation_goal 
 			.row 
-				.col-sm-8 
-					h3 Deadline 
 				.col-sm-4 
-					h3=deadline
+					h4 Deadline 
+				.col-sm-8 
+					h4=deadline
 			.row(style="background-color:lightgrey;")
 				legend.text-center Insert review regarding payment information
 				.form-group
@@ -84,4 +84,8 @@ head
 					label.col-md-2.control-label(for='obituary_review') obituary_review
 					.col-md-10
 						textarea#page_name.form-control.input-md(name='obituary_review' rows='6' placeholder='List problems regarding obituary details')
-			
+			.row 
+				.form-group
+					label.col-md-4.control-label(for='submit')
+					.col-md-8
+						button#submit.btn.btn-primary(name='submit') Simulate page creation
