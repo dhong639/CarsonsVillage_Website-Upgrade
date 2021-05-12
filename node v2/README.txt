@@ -62,8 +62,10 @@ Current and Planned Prototype Functions:
 		- loads page name, donation goal, and deadline based on provided user id
 	- '/family/:userid([0-9]+)/page-insert'
 		- insert all page_details information for current user id
+	- '/family/:user_id([0-9]+)/edit/:page_name'
+		- edit pending page
 	- Planned functions
-		- Edit page details
+		- Upload page edits to database
 		- Upload/store pictures
 - Admin
 	- '/advocate-admin/:user_id([0-9]+)'
@@ -73,9 +75,12 @@ Current and Planned Prototype Functions:
 		- insert all user_account information for new user 
 	- '/advocate-admin/:user_id([0-9]+)/page-list'-
 		- list all existing client pages
+	- '/advocate-admin/review/:user_id([0-9]+)/:page_name'
+		- attach review to pending page
 	- Planned functions
 		- ability to edit/enable/disable pages
 		- ability to terminate users
+		- submit review logs to database
 - Other planned functions
 	- View donations
 	- Extract donations
